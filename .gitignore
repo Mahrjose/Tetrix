@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+lib/
+.vscode/
+bin/
 
 # Compiled Object files
 *.slo
