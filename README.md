@@ -31,7 +31,7 @@ A vibrant Tetris-inspired game where falling blocks and strategic power-ups coll
 1. Clone the repository:
    ```bash
    git clone https://github.com/mahrjose/Tetrix.git
-   cd GridFall
+   cd Tetrix
    ```
 2. Compile and Run the code:
    ```bash
