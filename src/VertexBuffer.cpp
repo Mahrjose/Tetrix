@@ -1,10 +1,10 @@
 #include "VertexBuffer.h"
 
 VertexBuffer::VertexBuffer(const void* data, GLsizeiptr size)
-    : m_Size(size) {
-    glGenBuffers(1, &m_RendererID);
-    glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-    glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
+    : m_Size(size), m_Stride(0) {
+    glGenBuffers(1, &m_RendererID);                             // Generate a buffer ID.
+    glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);                // Bind the buffer as an ARRAY_BUFFER.
+    glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);  // Upload data to GPU.
 }
 
 VertexBuffer::~VertexBuffer() {
