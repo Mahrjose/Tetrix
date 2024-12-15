@@ -6,15 +6,15 @@
 
 class VertexBuffer {
    private:
-    unsigned int m_RendererID;  // ID for the vertex buffer
-    unsigned int m_Size;        // Size of the vertex data
+    GLuint m_RendererID;  // ID for the vertex buffer
+    GLsizeiptr m_Size;    // Size of the vertex data
 
    public:
-    VertexBuffer(const void* data, unsigned int size);
+    VertexBuffer(const void* data, GLsizeiptr size);
     ~VertexBuffer();
 
     void Bind() const;
     void Unbind() const;
 
-    inline unsigned int GetSize() const { return m_Size; };
+    inline GLsizeiptr GetSize() const { return m_Size; };
 };
