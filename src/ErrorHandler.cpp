@@ -1,10 +1,14 @@
-#include "includes/ErrorHandler.h"
+#include "ErrorHandler.h"
 
 void ErrorHandler::EnableDebugOutput() {
-    glEnable(GL_DEBUG_OUTPUT);                                                             // Enable OpenGL debug output
-    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);                                                 // Makes sure the messages are synchronous
-    glDebugMessageCallback(DebugCallback, nullptr);                                        // Register the callback function
-    glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);  // Enable all messages
+    if (GLEW_VERSION_4_3 || GLEW_ARB_debug_output) {
+        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+        glDebugMessageCallback(DebugCallback, nullptr);
+        glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+    } else {
+        std::cerr << "OpenGL debug output is not supported on this system." << std::endl;
+    }
 }
 
 void APIENTRY ErrorHandler::DebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity,
