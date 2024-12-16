@@ -1,4 +1,4 @@
-#include "includes/Shader.h"
+#include "Shader.h"
 
 #include <fstream>
 #include <iostream>
@@ -16,7 +16,7 @@ Shader::~Shader() {
 }
 
 ShaderProgramSource Shader::ParseShader(const std::string& file) {
-    // !!! ===> Please pass path relative to this file not the main application
+    // Please pass path relative to this file not the main application file (!)
     std::ifstream stream(file);
 
     enum class ShaderType {
@@ -68,22 +68,22 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
     glShaderSource(id, 1, &src, nullptr);
     glCompileShader(id);
 
-    // Error Handling
-    int result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    if (result == GL_FALSE) {
-        int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message = (char*)alloca(length * sizeof(char));
+    // // Error Handling
+    // int result;
+    // glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+    // if (result == GL_FALSE) {
+    //     int length;
+    //     glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+    //     char* message = (char*)alloca(length * sizeof(char));
 
-        glGetShaderInfoLog(id, length, &length, message);
+    //     glGetShaderInfoLog(id, length, &length, message);
 
-        std::cout << (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment") << "Shader didn't compile sucessfully!" << std::endl;
-        std::cout << message << std::endl;
+    //     std::cout << (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment") << "Shader didn't compile sucessfully!" << std::endl;
+    //     std::cout << message << std::endl;
 
-        glDeleteShader(id);
-        return 0;
-    }
+    //     glDeleteShader(id);
+    //     return 0;
+    // }
 
     return id;
 }

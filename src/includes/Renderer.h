@@ -8,7 +8,7 @@
 
 class Renderer {
    public:
-    void Clear() const;
-    void DrawT(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
-    void DrawP(const unsigned int& start, const VertexArray& va, const Shader& shader, const float& pointSize = 1.0f) const;
+    void ClearScreen() const;
+    void DrawTringles(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+    void DrawPoints(const unsigned int& start, const VertexArray& va, const Shader& shader, const float& pointSize = 1.0f) const;
 };
