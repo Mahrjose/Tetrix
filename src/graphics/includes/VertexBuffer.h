@@ -41,6 +41,17 @@ class VertexBuffer {
     void Unbind() const;
 
     /**
+     * @brief Updates the buffer with new data.
+     * 
+     * If the new size is smaller or equal to the existing size, updates only the modified portion.
+     * Otherwise, reallocates the buffer with the new size.
+     * 
+     * @param data Pointer to the new vertex data.
+     * @param size Size of the new vertex data in bytes.
+     */
+    void Update(const void* data, GLsizeiptr size);
+
+    /**
      * @return The size of the vertex buffer in bytes.
      */
     inline GLsizeiptr GetSize() const { return m_Size; };
