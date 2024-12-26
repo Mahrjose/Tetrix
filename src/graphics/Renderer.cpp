@@ -10,7 +10,7 @@ void Renderer::DrawPoints(const unsigned int& start, const VertexArray& va, cons
     shader.Bind();
     va.Bind();
     glPointSize(pointSize);
-    glDrawArrays(GL_POINT, start, va.GetNumVertices());
+    glDrawArrays(GL_POINTS, start, va.GetNumVertices());
 }
 
 void Renderer::DrawTringles(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const {

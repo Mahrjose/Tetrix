@@ -41,24 +41,13 @@ ShaderProgramSource Shader::ParseShader(const std::string& file) {
         }
     }
 
+    // // For DEBUG & Testing
+    // std::cout << "START" << std::endl;
+    // std::cout << ss[0].str() << std::endl;
+    // std::cout << ss[1].str() << std::endl;
+    // std::cout << "END" << std::endl;
+
     return {ss[0].str(), ss[1].str()};
-}
-
-unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
-    unsigned int program = glCreateProgram();
-
-    unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glLinkProgram(program);
-    glValidateProgram(program);
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return program;
 }
 
 unsigned int Shader::CompileShader(unsigned int type, const std::string& source) {
@@ -86,6 +75,23 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
     // }
 
     return id;
+}
+
+unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
+    unsigned int program = glCreateProgram();
+
+    unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
+    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+
+    glAttachShader(program, vs);
+    glAttachShader(program, fs);
+    glLinkProgram(program);
+    glValidateProgram(program);
+
+    glDeleteShader(vs);
+    glDeleteShader(fs);
+
+    return program;
 }
 
 void Shader::Bind() const {
