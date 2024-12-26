@@ -16,18 +16,28 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 #-----------------------------------------------------------------#
+# ================== Automatically Gather Sources =============== #
+file(GLOB_RECURSE SOURCES
+    ${CMAKE_SOURCE_DIR}/Application.cpp
+    ${CMAKE_SOURCE_DIR}/src/graphics/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/game/*.cpp
+)
+
+# target_sources(${PROJECT_NAME} PRIVATE
+#     ${PROJECT_SOURCE_DIR}/Application
+#     # Add more source files here ...
+# )
+
+#-----------------------------------------------------------------#
 # ================= Include Directories & Headers =============== #
 add_executable(${PROJECT_NAME} ${SOURCES})  # Entry Point
 
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_SOURCE_DIR}/src/
-    ${CMAKE_SOURCE_DIR}/src/includes
-)
-
-target_sources(${PROJECT_NAME} PRIVATE
-    ${PROJECT_SOURCE_DIR}/Application
-    # Add more source files here ...
+    ${CMAKE_SOURCE_DIR}/src/graphics/
+    ${CMAKE_SOURCE_DIR}/src/graphics/includes
+    ${CMAKE_SOURCE_DIR}/src/game/
+    ${CMAKE_SOURCE_DIR}/src/game/includes
 )
 
 #-----------------------------------------------------------------#
@@ -44,6 +54,7 @@ target_link_libraries(${PROJECT_NAME}
     GLUT::GLUT 
     GLEW::GLEW 
     glfw
+    GLU
 )
 
 #-----------------------------------------------------------------#
