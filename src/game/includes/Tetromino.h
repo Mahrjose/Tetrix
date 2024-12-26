@@ -30,6 +30,7 @@ class Tetromino {
     Tetromino();
     // ~Tetromino();
 
+    inline std::vector<float> GetVertexData() const { return m_BoxVertices; };
     void CreateBox(int row, int col);
     void UpdateBuffer();
 
