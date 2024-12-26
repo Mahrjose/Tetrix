@@ -4,6 +4,7 @@ build/
 lib/
 .vscode/
 bin/
+docs/
 
 # Compiled Object files
 *.slo
