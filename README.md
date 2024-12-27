@@ -1,5 +1,8 @@
 # **Project Name: Tetrix**
 
+### **Update (27 December, 2024)**
+I've completed a demo version of the project using **Legecy OpenGL** instead. This was a part of my Computer Graphics course project and with a tight deadline, I couldn't explore the modern OpenGL properly. Also, it was specially challenging to implement the whole game with only `GL_POINT`. Please checkout [demo/](./demo) directory, and compile and run the code to play with the project. I'll get back to modern OpenGL implementation if I get time later. Thank you.
+
 ### **Description**
 A vibrant Tetris-inspired game where falling blocks and strategic power-ups collide, made entirely using OpenGL, C++, and GL_POINTS.
 
